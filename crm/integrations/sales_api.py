@@ -2,6 +2,8 @@ import frappe
 import requests
 from requests.auth import HTTPBasicAuth
 
+from crm.integrations.one_c_sync import SALES_CACHE_KEY
+
 
 def _fetch_1c_data():
 	settings = frappe.get_doc("CRM 1C Settings")
@@ -38,6 +40,20 @@ def _format_rows(items, extra_fields=None):
 
 @frappe.whitelist()
 def get_sales_data():
+	# Try cached data first (pushed from local machine)
+	cached = frappe.cache().get_value(SALES_CACHE_KEY)
+	if cached:
+		return {
+			"day": _format_rows(cached.get("day", [])),
+			"week": _format_rows(cached.get("week", [])),
+			"month": _format_rows(cached.get("month", [])),
+			"quarter": _format_rows(cached.get("quarter", [])),
+			"year": _format_rows(cached.get("year", [])),
+			"plan": _format_rows(cached.get("plan", []), extra_fields=["month", "year"]),
+			"cached_at": cached.get("cached_at"),
+		}
+
+	# Fall back to direct 1C fetch if server can reach it
 	try:
 		data = _fetch_1c_data()
 		return {

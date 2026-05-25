@@ -341,6 +341,58 @@ def sync_from_1c():
 		frappe.throw(f"Sync failed: {str(e)}")
 
 
+SALES_CACHE_KEY = "crm_1c_sales_data"
+SALES_CACHE_TTL = 4 * 3600  # 4 hours
+
+
+@frappe.whitelist(allow_guest=True)
+def push_1c_data(token: str, data: str | dict) -> dict:
+	"""
+	Accept 1C data pushed from an external machine that has access to the 1C server.
+	Runs warehouse/item/debtor sync and caches sales data.
+	Auth: token must match rko_api_token in site_config.json.
+	"""
+	expected = frappe.conf.get("rko_api_token", "")
+	if not expected or token != expected:
+		frappe.throw("Неверный токен", frappe.AuthenticationError)
+
+	if isinstance(data, str):
+		data = json.loads(data)
+
+	warehouses_created = sync_warehouses_from_1c(data)
+	frappe.db.commit()
+
+	items_synced = sync_items_from_1c(data)
+	frappe.db.commit()
+
+	debtors_synced = sync_debtors_from_1c(data)
+	frappe.db.commit()
+
+	update_sync_status(items_synced)
+
+	sales_payload = {
+		"day": data.get("salesDay", []),
+		"week": data.get("salesWeek", []),
+		"month": data.get("salesMonth", []),
+		"quarter": data.get("salesQuarter", []),
+		"year": data.get("salesYear", []),
+		"plan": data.get("Планы", []),
+		"history": data.get("salesHistory", []),
+		"shops": data.get("shops", []),
+		"currency": data.get("Курсы", {}),
+		"cached_at": str(datetime.now()),
+	}
+	frappe.cache().set_value(SALES_CACHE_KEY, sales_payload, expires_in_sec=SALES_CACHE_TTL)
+
+	return {
+		"success": True,
+		"warehouses_created": warehouses_created,
+		"items_synced": items_synced,
+		"debtors_synced": debtors_synced,
+		"last_sync": str(datetime.now()),
+	}
+
+
 @frappe.whitelist()
 def get_debtor_stats():
 	"""Return summary stats for debtors dashboard."""
