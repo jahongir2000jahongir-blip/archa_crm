@@ -1,0 +1,205 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "field:item_code",
+ "creation": "2026-05-07 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "item_name",
+  "article",
+  "category",
+  "column_break_details",
+  "quantity",
+  "reserved",
+  "unit",
+  "column_break_price",
+  "price",
+  "price_usd",
+  "column_break_warehouse",
+  "warehouse",
+  "warehouse_name",
+  "section_break_sync",
+  "synced_from_1c",
+  "one_c_category"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Код товара",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Наименование",
+   "reqd": 1
+  },
+  {
+   "fieldname": "article",
+   "fieldtype": "Data",
+   "label": "Артикул"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Категория",
+   "options": "Краски\nМебель\nДверь\nСтроительство\nСтолы и стулья\nСпорттовар\nЭлектрика\nПрочее"
+  },
+  {
+   "fieldname": "column_break_details",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Количество"
+  },
+  {
+   "fieldname": "reserved",
+   "fieldtype": "Float",
+   "label": "Резерв"
+  },
+  {
+   "fieldname": "unit",
+   "fieldtype": "Data",
+   "label": "Ед. изм."
+  },
+  {
+   "fieldname": "column_break_price",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "label": "Цена (TJS)"
+  },
+  {
+   "fieldname": "price_usd",
+   "fieldtype": "Currency",
+   "label": "Цена (USD)"
+  },
+  {
+   "fieldname": "column_break_warehouse",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Склад",
+   "options": "CRM Warehouse"
+  },
+  {
+   "fieldname": "warehouse_name",
+   "fieldtype": "Data",
+   "label": "Название склада"
+  },
+  {
+   "fieldname": "section_break_sync",
+   "fieldtype": "Section Break",
+   "label": "Синхронизация 1С"
+  },
+  {
+   "default": "0",
+   "fieldname": "synced_from_1c",
+   "fieldtype": "Check",
+   "label": "Синхронизировано из 1С"
+  },
+  {
+   "fieldname": "one_c_category",
+   "fieldtype": "Data",
+   "label": "Категория 1С"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-05-07 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "FCRM",
+ "name": "CRM Warehouse Item",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Директор",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Главный бухгалтер",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Пользователь",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,211 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "CRM-RKO-.####",
+ "creation": "2026-05-12 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "purpose",
+  "created_by_name",
+  "amount",
+  "column_break_right",
+  "expense_category",
+  "recipient",
+  "payment_date",
+  "status",
+  "approver_role",
+  "approval_date",
+  "section_break_comment",
+  "comment",
+  "approver_comment",
+  "redirect_comment"
+ ],
+ "fields": [
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Назначение платежа",
+   "reqd": 1
+  },
+  {
+   "fieldname": "created_by_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Заявитель",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Сумма (сомони)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_right",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expense_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Статья расходов",
+   "options": "Материалы и сирье\nЗарплата / аванс\nТранспорт / топливо\nАренда\nКоммунальные услуги\nОфисные расходы\nРемонт и обслуживание\nПрочее"
+  },
+  {
+   "fieldname": "recipient",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Получатель / поставщик"
+  },
+  {
+   "default": "Today",
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Дата создания"
+  },
+  {
+   "default": "На одобрении",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Статус",
+   "options": "На одобрении\nУ кассира\nОплачено\nОтклонена"
+  },
+  {
+   "fieldname": "approver_role",
+   "fieldtype": "Select",
+   "in_list_view": 0,
+   "label": "Отправить на одобрение",
+   "options": "Главный бухгалтер\nДиректор"
+  },
+  {
+   "fieldname": "approval_date",
+   "fieldtype": "Date",
+   "in_list_view": 0,
+   "label": "Дата согласования",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_comment",
+   "fieldtype": "Section Break",
+   "label": "Комментарий"
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Text",
+   "label": "Комментарий"
+  },
+  {
+   "fieldname": "approver_comment",
+   "fieldtype": "Text",
+   "in_list_view": 0,
+   "label": "Комментарий одобряющего"
+  },
+  {
+   "fieldname": "redirect_comment",
+   "fieldtype": "Text",
+   "in_list_view": 0,
+   "label": "Комментарий перенаправления"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-05-12 13:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "FCRM",
+ "name": "CRM RKO Request",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Директор",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Главный бухгалтер",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Пользователь",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Кассир",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

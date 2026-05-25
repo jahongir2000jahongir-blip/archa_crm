@@ -1,0 +1,38 @@
+{
+ "actions": [],
+ "creation": "2026-05-07 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "source_category",
+  "target_category"
+ ],
+ "fields": [
+  {
+   "fieldname": "source_category",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "1C Category",
+   "reqd": 1
+  },
+  {
+   "fieldname": "target_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "CRM Category",
+   "options": "Краски\nМебель\nДверь\nСтроительство\nСтолы и стулья\nСпорттовар\nЭлектрика\nПрочее",
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2026-05-07 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "FCRM",
+ "name": "CRM 1C Category Mapping",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
